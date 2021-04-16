@@ -1,4 +1,10 @@
+//GridView -> https://medium.com/globant/gridview-in-flutter-ede1df032fe7
+//Hovering Effect -> https://pub.dev/packages/hovering
+//Opacity -> https://api.flutter.dev/flutter/widgets/Opacity-class.html
+//ClipRRect -> https://www.appsdeveloperblog.com/image-with-rounded-corners-in-flutter/
+
 import 'package:flutter/material.dart';
+import 'package:hovering/hovering.dart';
 
 void main() => runApp(MyApp());
 
@@ -6,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My GridView',
+      title: 'GridView Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -16,7 +22,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//Modified the code from here -> https://medium.com/globant/gridview-in-flutter-ede1df032fe7
 class GridList extends StatelessWidget {
   final List<String> _list = [
     "https://images.unsplash.com/photo-1613244447676-e6260346f5a6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80",
@@ -44,10 +49,13 @@ class GridList extends StatelessWidget {
     "https://images.unsplash.com/photo-1617130266198-067b697fd425?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=633&q=80",
     //20
   ];
-//list of strings to display in grid
+
+  final _key = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
       appBar: AppBar(
         title: Text('GridView Demo'),
       ),
@@ -58,8 +66,39 @@ class GridList extends StatelessWidget {
         mainAxisSpacing: 5.0,
         children: _list
             .map((data) => Card(
-                  //Inspired from -> https://stackoverflow.com/a/52216062/12302691
-                  child: Container(
+                  child: HoverWidget(
+                      //-Simply changes one widget to another on Hover.
+                      //-Also uses onHover property.
+
+                      //WIDGET VISIBLE WITHOUT HOVER
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: Image.network(
+                          data,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+
+                      //WIDGET VISIBLE WITH HOVER
+                      hoverChild: ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: Image.network(
+                          data,
+                          fit: BoxFit.cover,
+                          color: Color.fromRGBO(255, 255, 255, 0.5),
+                          colorBlendMode: BlendMode.modulate,
+                        ),
+                      ),
+
+                      //EVENT ON HOVER
+                      onHover: (event) {
+                        // ignore: deprecated_member_use
+                        _key.currentState!.showSnackBar(SnackBar(
+                          content: Text('Yaay! I am Hovered'),
+                        ));
+                      }),
+
+                  /*child: Container(
                     decoration: BoxDecoration(
                       color: Colors.grey,
                       image: DecorationImage(
@@ -68,7 +107,7 @@ class GridList extends StatelessWidget {
                       ),
                       borderRadius: BorderRadius.all(Radius.circular(15.0)),
                     ),
-                  ),
+                  ),*/
                 ))
             .toList(),
       ),
