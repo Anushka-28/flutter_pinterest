@@ -305,27 +305,51 @@ class GridList extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   //BOARD DROPDOWN
-                                  FloatingActionButton.extended(
-                                    onPressed: () {},
-                                    backgroundColor: Colors.white70,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(15.0),
-                                        topLeft: Radius.circular(15.0),
+                                  Expanded(
+                                    child: FloatingActionButton(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.white70,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(15.0),
+                                          topLeft: Radius.circular(15.0),
+                                        ),
                                       ),
-                                    ),
-                                    label: Text(
-                                      "My Board",
-                                      style: TextStyle(
-                                        color: Colors.black54,
+                                      child: Row(
+                                        children: [
+                                          new Padding(
+                                              padding:
+                                                  const EdgeInsets.all(10.0)),
+                                          Text(
+                                            "My Board",
+                                            style: TextStyle(
+                                              color: Colors.black54,
+                                            ),
+                                          ),
+                                          new Padding(
+                                              padding:
+                                                  const EdgeInsets.all(85.0)),
+                                          Icon(
+                                            AppIcons.down_open,
+                                            color: Colors.black87,
+                                            size: 20.0,
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                    icon: Icon(
-                                      AppIcons.down_open,
-                                      color: Colors.black87,
-                                      size: 15.0,
+                                      /*  label: Text(
+                                          "My Board",
+                                          style: TextStyle(
+                                            color: Colors.black54,
+                                          ),
+                                        ),
+                                      icon: Icon(
+                                        AppIcons.down_open,
+                                        color: Colors.black87,
+                                        size: 15.0,
+                                      ),*/
                                     ),
                                   ),
+
                                   //SAVE BUTTON
                                   FloatingActionButton.extended(
                                     onPressed: () {},
