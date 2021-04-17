@@ -71,8 +71,10 @@ class GridList extends StatelessWidget {
               icon: Icon(
                 AppIcons.pinterest_icon,
                 color: Colors.red[800],
-                size: 30.0,
+                size: 25.0,
               ),
+              hoverColor: Colors.black26,
+              constraints: BoxConstraints.tightFor(width: 10.0, height: 10.0),
             );
           },
         ),
@@ -82,17 +84,18 @@ class GridList extends StatelessWidget {
           children: [
             //Child #1 -> "HOME" BUTTON
             Container(
-              height: 40,
+              height: 35,
               width: 80,
               margin: const EdgeInsets.only(
                   top: 35.0, bottom: 35.0, left: 0.0, right: 10.0),
               decoration: BoxDecoration(
-                color: Colors.black12,
+                color: Colors.black26,
                 borderRadius: BorderRadius.circular(40),
               ),
               child: FloatingActionButton(
                 onPressed: () {},
                 backgroundColor: Colors.black87,
+                hoverColor: Colors.white60,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(35.0)),
                 ),
@@ -108,7 +111,7 @@ class GridList extends StatelessWidget {
 
             //Child #2 -> "TODAY" BUTTON
             Container(
-              height: 40,
+              height: 35,
               width: 80,
               margin: const EdgeInsets.only(
                   top: 35.0, bottom: 35.0, left: 5.0, right: 10.0),
@@ -119,6 +122,7 @@ class GridList extends StatelessWidget {
               child: FloatingActionButton(
                 onPressed: () {},
                 backgroundColor: Colors.white,
+                hoverColor: Colors.black26,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(35.0)),
                 ),
@@ -134,12 +138,16 @@ class GridList extends StatelessWidget {
 
             //Child #3 -> SEARCH BAR
             Expanded(
-              child: Container(
+              child: HoverContainer(
                 height: 40,
                 margin: const EdgeInsets.only(
                     top: 35.0, bottom: 35.0, left: 5.0, right: 5.0),
                 decoration: BoxDecoration(
                   color: Colors.black12,
+                  borderRadius: BorderRadius.circular(40),
+                ),
+                hoverDecoration: BoxDecoration(
+                  color: Colors.black26,
                   borderRadius: BorderRadius.circular(40),
                 ),
                 //TextFormField class -> https://api.flutter.dev/flutter/material/TextFormField-class.html
@@ -162,37 +170,41 @@ class GridList extends StatelessWidget {
           new Padding(padding: const EdgeInsets.all(5.0)),
           IconButton(
             onPressed: () {},
+            hoverColor: Colors.black26,
             icon: const Icon(
               AppIcons.bell,
               color: Colors.black54,
-              size: 25.0,
+              size: 20.0,
             ),
           ),
           new Padding(padding: const EdgeInsets.all(5.0)),
           IconButton(
             onPressed: () {},
+            hoverColor: Colors.black26,
             icon: const Icon(
               AppIcons.chat,
               color: Colors.black54,
-              size: 25.0,
+              size: 20.0,
             ),
           ),
           new Padding(padding: const EdgeInsets.all(5.0)),
           IconButton(
             onPressed: () {},
+            hoverColor: Colors.black26,
             icon: const Icon(
               AppIcons.person,
               color: Colors.black54,
-              size: 25.0,
+              size: 20.0,
             ),
           ),
           new Padding(padding: const EdgeInsets.all(5.0)),
           IconButton(
             onPressed: () {},
+            hoverColor: Colors.black26,
             icon: const Icon(
               AppIcons.down_open,
               color: Colors.black54,
-              size: 25.0,
+              size: 20.0,
             ),
           ),
           new Padding(padding: const EdgeInsets.all(5.0)),
