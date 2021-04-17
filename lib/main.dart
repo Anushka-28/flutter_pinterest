@@ -59,6 +59,8 @@ class GridList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _key,
+      //
+      //---------------> APP BAR
       //AppBar class -> https://api.flutter.dev/flutter/material/AppBar-class.html
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -74,7 +76,6 @@ class GridList extends StatelessWidget {
                 size: 25.0,
               ),
               hoverColor: Colors.black26,
-              constraints: BoxConstraints.tightFor(width: 10.0, height: 10.0),
             );
           },
         ),
@@ -174,21 +175,6 @@ class GridList extends StatelessWidget {
                     hintText: "Search",
                   ),
                 ),
-                /*child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 15.0,
-                  ),
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                      icon: Icon(
-                        AppIcons.search,
-                        color: Colors.black45,
-                        size: 20,
-                      ),
-                      hintText: "Search",
-                    ),
-                  ),
-                ),*/
               ),
             ),
           ],
@@ -238,6 +224,9 @@ class GridList extends StatelessWidget {
           new Padding(padding: const EdgeInsets.all(5.0)),
         ],
       ),
+      //
+      //---------------> BODY
+      //
       body: GridView.count(
         crossAxisCount: 4,
         padding: EdgeInsets.all(5.0),
@@ -298,13 +287,13 @@ class GridList extends StatelessWidget {
                             child: Container(
                               //Margin -> https://stackoverflow.com/a/50348562/12302691
                               margin: const EdgeInsets.only(
-                                  top: 5.0, left: 5.0, right: 5.0),
+                                  top: 12.0, left: 5.0, right: 5.0),
                               height: 40,
                               //width: 120,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  //BOARD DROPDOWN
+                                  //BOARDS DROPDOWN
                                   Expanded(
                                     child: FloatingActionButton(
                                       onPressed: () {},
@@ -326,29 +315,22 @@ class GridList extends StatelessWidget {
                                               color: Colors.black54,
                                             ),
                                           ),
-                                          new Padding(
-                                              padding:
-                                                  const EdgeInsets.all(85.0)),
+                                          //Padding for large space between widgets is not good, because container size may vary. That would result in content overflow.
+                                          //Spacer -> https://stackoverflow.com/a/52377051/12302691
+                                          Spacer(),
                                           Icon(
                                             AppIcons.down_open,
                                             color: Colors.black87,
                                             size: 20.0,
                                           ),
+                                          new Padding(
+                                              padding:
+                                                  const EdgeInsets.all(5.0)),
                                         ],
                                       ),
-                                      /*  label: Text(
-                                          "My Board",
-                                          style: TextStyle(
-                                            color: Colors.black54,
-                                          ),
-                                        ),
-                                      icon: Icon(
-                                        AppIcons.down_open,
-                                        color: Colors.black87,
-                                        size: 15.0,
-                                      ),*/
                                     ),
                                   ),
+                                  //END OF BOARDS DROPDOWN
 
                                   //SAVE BUTTON
                                   FloatingActionButton.extended(
@@ -367,98 +349,98 @@ class GridList extends StatelessWidget {
                                       ),
                                     ),
                                   ),
+                                  //END OF SAVE BUTTON
                                 ],
                               ),
                             ),
                           ),
                           //END OF CHILD #2
                           //
-                          //CHILD #3 -> 3DOTS MENU BUTTON
+                          //CHILD #3.2 -> BOTTOM BUTTONS
                           new Align(
-                            alignment: Alignment(1.0, 1.0),
+                            alignment: Alignment.bottomCenter,
                             child: Container(
-                              height: 30,
-                              width: 30,
                               margin: const EdgeInsets.only(
-                                  bottom: 5.0, left: 10.0, right: 5.0),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(40)),
-                              child: FloatingActionButton(
-                                onPressed: () {},
-                                backgroundColor: Colors.white70,
-                                child: Icon(
-                                  AppIcons.more_horiz,
-                                  color: Colors.black87,
-                                  size: 15.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                          //END OF CHILD #3
-                          //
-                          //CHILD #4 -> SHARE BUTTON
-                          new Align(
-                            alignment: Alignment(0.6, 1.0),
-                            child: Container(
-                              height: 30,
-                              width: 30,
-                              margin: const EdgeInsets.only(
-                                  bottom: 5.0, left: 10.0, right: 10.0),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(40)),
-                              child: FloatingActionButton(
-                                onPressed: () {},
-                                backgroundColor: Colors.white70,
-                                child: Icon(
-                                  AppIcons.upload,
-                                  color: Colors.black87,
-                                  size: 15.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                          //END OF CHILD #4
-                          //
-                          //CHILD #5 -> LINK BUTTON
-                          new Align(
-                            alignment: Alignment(-1.0, 1.0),
-                            child: Container(
-                              height: 30,
-                              width: 120,
-                              margin: const EdgeInsets.only(
-                                  bottom: 5.0, left: 5.0, right: 10.0),
-                              child: FloatingActionButton.extended(
-                                onPressed: () {},
-                                backgroundColor: Colors.white70,
-                                icon: Icon(
-                                  AppIcons.direction,
-                                  color: Colors.black87,
-                                  size: 15.0,
-                                ),
-                                //Text Overflow Problem -> https://medium.com/flutterworld/flutter-text-wrapping-ellipsis-4fa70b19d316
-                                label: SizedBox(
-                                  width: 80,
-                                  child: Text(
-                                    data,
-                                    style: TextStyle(color: Colors.black87),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    softWrap: false,
+                                  bottom: 12.0, left: 5.0, right: 5.0),
+                              height: 40,
+                              //width: 120,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  new Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 8.0)),
+                                  //LINK BUTTON
+                                  Expanded(
+                                    child: FloatingActionButton(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.white70,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20.0)),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          new Padding(
+                                              padding:
+                                                  const EdgeInsets.all(3.0)),
+                                          Icon(
+                                            AppIcons.direction,
+                                            color: Colors.black87,
+                                            size: 20.0,
+                                          ),
+                                          new Padding(
+                                              padding:
+                                                  const EdgeInsets.all(5.0)),
+                                          Expanded(
+                                            child: Text(
+                                              data,
+                                              style: TextStyle(
+                                                color: Colors.black87,
+                                              ),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              softWrap: false,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                  //END OF LINK BUTTON
+                                  new Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 8.0)),
+                                  //SHARE BUTTON
+                                  FloatingActionButton(
+                                    onPressed: () {},
+                                    backgroundColor: Colors.white70,
+                                    child: Icon(
+                                      AppIcons.upload,
+                                      color: Colors.black87,
+                                      size: 15.0,
+                                    ),
+                                  ),
+                                  //END OF SHARE BUTTON
+                                  //
+                                  //3DOTS MENU BUTTON
+                                  FloatingActionButton(
+                                    onPressed: () {},
+                                    backgroundColor: Colors.white70,
+                                    child: Icon(
+                                      AppIcons.more_horiz,
+                                      color: Colors.black87,
+                                      size: 22.0,
+                                    ),
+                                  ),
+                                  //END OF 3DOTS MENU BUTTON
+                                ],
                               ),
                             ),
                           ),
-                          //END OF CHILD #5
+                          //END OF CHILD #3.2
                         ],
                       ),
-
-                      /*child: Image.network(
-                        data,
-                        fit: BoxFit.cover,
-                        color: Color.fromRGBO(255, 255, 255, 0.5),
-                        colorBlendMode: BlendMode.modulate,
-                      ),*/
                     ),
                     //END OF hoverChild
                   ),
