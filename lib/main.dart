@@ -152,15 +152,43 @@ class GridList extends StatelessWidget {
                 ),
                 //TextFormField class -> https://api.flutter.dev/flutter/material/TextFormField-class.html
                 child: TextFormField(
-                  decoration: const InputDecoration(
-                    icon: Icon(
-                      AppIcons.search,
-                      color: Colors.black45,
-                      size: 20,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    //Removing underline and moving hintText -> https://stackoverflow.com/a/58668891/12302691
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding:
+                        EdgeInsets.only(left: 0.0, bottom: 0.0, top: 11.0),
+                    //Aligning the search icon -> https://api.flutter.dev/flutter/material/InputDecoration/prefixIcon.html
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.only(left: 10.0, right: 15.0),
+                      child: Icon(
+                        AppIcons.search,
+                        color: Colors.black45,
+                        size: 20,
+                      ),
                     ),
                     hintText: "Search",
                   ),
                 ),
+                /*child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 15.0,
+                  ),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      icon: Icon(
+                        AppIcons.search,
+                        color: Colors.black45,
+                        size: 20,
+                      ),
+                      hintText: "Search",
+                    ),
+                  ),
+                ),*/
               ),
             ),
           ],
