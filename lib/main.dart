@@ -245,6 +245,11 @@ class GridList extends StatelessWidget {
         mainAxisSpacing: 5.0,
         children: _list
             .map((data) => Card(
+                  //shape of card should be same as that of ClipRRect. Otherwise, the card is distincly visible under it.
+                  elevation: 20.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
                   child: HoverWidget(
                     //WIDGET VISIBLE WITHOUT HOVER
                     child: ClipRRect(
