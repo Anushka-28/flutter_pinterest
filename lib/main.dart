@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//Modified the code from here -> https://medium.com/globant/gridview-in-flutter-ede1df032fe7
 class GridList extends StatelessWidget {
   final List<String> _list = [
     "https://images.unsplash.com/photo-1613244447676-e6260346f5a6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80",
@@ -69,47 +70,193 @@ class GridList extends StatelessWidget {
         children: _list
             .map((data) => Card(
                   child: HoverWidget(
-                      //-Simply changes one widget to another on Hover.
-                      //-Also uses onHover property.
-
-                      //WIDGET VISIBLE WITHOUT HOVER
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15.0),
-                        child: Image.network(
-                          data,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-
-                      //WIDGET VISIBLE WITH HOVER
-                      hoverChild: ClipRRect(
-                        borderRadius: BorderRadius.circular(15.0),
-                        child: Image.network(
-                          data,
-                          fit: BoxFit.cover,
-                          color: Color.fromRGBO(255, 255, 255, 0.5),
-                          colorBlendMode: BlendMode.modulate,
-                        ),
-                      ),
-
-                      //EVENT ON HOVER
-                      onHover: (event) {
-                        // ignore: deprecated_member_use
-                        _key.currentState!.showSnackBar(SnackBar(
-                          content: Text('Yaay! I am Hovered'),
-                        ));
-                      }),
-
-                  /*child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      image: DecorationImage(
-                        image: NetworkImage(data),
+                    //WIDGET VISIBLE WITHOUT HOVER
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15.0),
+                      child: Image.network(
+                        data,
                         fit: BoxFit.cover,
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
                     ),
-                  ),*/
+
+                    //EVENT ONHOVER
+                    onHover: (event) {
+                      // ignore: deprecated_member_use
+                      // _key.currentState!.showSnackBar(SnackBar(
+                      //   content: Text('Yaay! I am Hovered'),
+                      // ));
+                    },
+
+                    //WIDGET VISIBLE WITH HOVER
+                    hoverChild: ClipRRect(
+                      borderRadius: BorderRadius.circular(15.0),
+                      //https://api.flutter.dev/flutter/widgets/Stack-class.html
+                      child: Stack(
+                        children: <Widget>[
+                          //CHILD #1 -> IMAGE (LOW OPACITY)
+                          new SizedBox(
+                            // height: 200,
+                            // width: 200,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15.0),
+                              child: Image.network(
+                                data,
+                                fit: BoxFit.cover,
+                                color: Color.fromRGBO(255, 255, 255, 0.5),
+                                colorBlendMode: BlendMode.modulate,
+                              ),
+                            ),
+                          ),
+                          //END OF CHILD #1
+                          //
+                          //CHILD #2 -> TOP BAR SAVE BUTTON
+                          //Align -> https://stackoverflow.com/a/51999052/12302691
+                          //https://stackoverflow.com/a/52637545/12302691
+                          new Align(
+                            alignment: Alignment.topCenter,
+                            child: Container(
+                              //Margin -> https://stackoverflow.com/a/50348562/12302691
+                              margin: const EdgeInsets.only(
+                                  top: 5.0, left: 5.0, right: 5.0),
+                              height: 40,
+                              //width: 120,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  //BOARD DROPDOWN
+                                  FloatingActionButton.extended(
+                                    onPressed: () {},
+                                    backgroundColor: Colors.white70,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(15.0),
+                                        topLeft: Radius.circular(15.0),
+                                      ),
+                                    ),
+                                    label: Text(
+                                      "My Board",
+                                      style: TextStyle(
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                    icon: Icon(
+                                      AppIcons.down_open,
+                                      color: Colors.black87,
+                                      size: 15.0,
+                                    ),
+                                  ),
+                                  //SAVE BUTTON
+                                  FloatingActionButton.extended(
+                                    onPressed: () {},
+                                    backgroundColor: Colors.red[800],
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(
+                                        bottomRight: Radius.circular(15.0),
+                                        topRight: Radius.circular(15.0),
+                                      ),
+                                    ),
+                                    label: Text(
+                                      "Save",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          //END OF CHILD #2
+                          //
+                          //CHILD #3 -> 3DOTS MENU BUTTON
+                          new Align(
+                            alignment: Alignment(1.0, 1.0),
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              margin: const EdgeInsets.only(
+                                  bottom: 5.0, left: 10.0, right: 5.0),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(40)),
+                              child: FloatingActionButton(
+                                onPressed: () {},
+                                backgroundColor: Colors.white70,
+                                child: Icon(
+                                  AppIcons.more_horiz,
+                                  color: Colors.black87,
+                                  size: 15.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          //END OF CHILD #3
+                          //
+                          //CHILD #4 -> SHARE BUTTON
+                          new Align(
+                            alignment: Alignment(0.6, 1.0),
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              margin: const EdgeInsets.only(
+                                  bottom: 5.0, left: 10.0, right: 10.0),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(40)),
+                              child: FloatingActionButton(
+                                onPressed: () {},
+                                backgroundColor: Colors.white70,
+                                child: Icon(
+                                  AppIcons.upload,
+                                  color: Colors.black87,
+                                  size: 15.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          //END OF CHILD #4
+                          //
+                          //CHILD #5 -> LINK BUTTON
+                          new Align(
+                            alignment: Alignment(-1.0, 1.0),
+                            child: Container(
+                              height: 30,
+                              width: 120,
+                              margin: const EdgeInsets.only(
+                                  bottom: 5.0, left: 5.0, right: 10.0),
+                              child: FloatingActionButton.extended(
+                                onPressed: () {},
+                                backgroundColor: Colors.white70,
+                                icon: Icon(
+                                  AppIcons.direction,
+                                  color: Colors.black87,
+                                  size: 15.0,
+                                ),
+                                //Text Overflow Problem -> https://medium.com/flutterworld/flutter-text-wrapping-ellipsis-4fa70b19d316
+                                label: SizedBox(
+                                  width: 80,
+                                  child: Text(
+                                    data,
+                                    style: TextStyle(color: Colors.black87),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    softWrap: false,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          //END OF CHILD #5
+                        ],
+                      ),
+
+                      /*child: Image.network(
+                        data,
+                        fit: BoxFit.cover,
+                        color: Color.fromRGBO(255, 255, 255, 0.5),
+                        colorBlendMode: BlendMode.modulate,
+                      ),*/
+                    ),
+                    //END OF hoverChild
+                  ),
                 ))
             .toList(),
       ),
