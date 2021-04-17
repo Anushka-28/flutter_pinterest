@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'GridView Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.red,
       ),
       home: GridList(),
     );
@@ -59,8 +59,144 @@ class GridList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _key,
+      //AppBar class -> https://api.flutter.dev/flutter/material/AppBar-class.html
       appBar: AppBar(
-        title: Text('GridView Demo'),
+        backgroundColor: Colors.white,
+        //LEADING
+        //Leading -> https://api.flutter.dev/flutter/material/AppBar/leading.html
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              onPressed: () {},
+              icon: Icon(
+                AppIcons.pinterest_icon,
+                color: Colors.red[800],
+                size: 30.0,
+              ),
+            );
+          },
+        ),
+        //TITLE
+        //Row and Expanded -> https://api.flutter.dev/flutter/widgets/Row-class.html
+        title: Row(
+          children: [
+            //Child #1 -> "HOME" BUTTON
+            Container(
+              height: 40,
+              width: 80,
+              margin: const EdgeInsets.only(
+                  top: 35.0, bottom: 35.0, left: 0.0, right: 10.0),
+              decoration: BoxDecoration(
+                color: Colors.black12,
+                borderRadius: BorderRadius.circular(40),
+              ),
+              child: FloatingActionButton(
+                onPressed: () {},
+                backgroundColor: Colors.black87,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(35.0)),
+                ),
+                child: Text(
+                  "Home",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+
+            //Child #2 -> "TODAY" BUTTON
+            Container(
+              height: 40,
+              width: 80,
+              margin: const EdgeInsets.only(
+                  top: 35.0, bottom: 35.0, left: 5.0, right: 10.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(40),
+              ),
+              child: FloatingActionButton(
+                onPressed: () {},
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(35.0)),
+                ),
+                child: Text(
+                  "Today",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+
+            //Child #3 -> SEARCH BAR
+            Expanded(
+              child: Container(
+                height: 40,
+                margin: const EdgeInsets.only(
+                    top: 35.0, bottom: 35.0, left: 5.0, right: 5.0),
+                decoration: BoxDecoration(
+                  color: Colors.black12,
+                  borderRadius: BorderRadius.circular(40),
+                ),
+                //TextFormField class -> https://api.flutter.dev/flutter/material/TextFormField-class.html
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    icon: Icon(
+                      AppIcons.search,
+                      color: Colors.black45,
+                      size: 20,
+                    ),
+                    hintText: "Search",
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        //ACTIONS
+        actions: <Widget>[
+          new Padding(padding: const EdgeInsets.all(5.0)),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              AppIcons.bell,
+              color: Colors.black54,
+              size: 25.0,
+            ),
+          ),
+          new Padding(padding: const EdgeInsets.all(5.0)),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              AppIcons.chat,
+              color: Colors.black54,
+              size: 25.0,
+            ),
+          ),
+          new Padding(padding: const EdgeInsets.all(5.0)),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              AppIcons.person,
+              color: Colors.black54,
+              size: 25.0,
+            ),
+          ),
+          new Padding(padding: const EdgeInsets.all(5.0)),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              AppIcons.down_open,
+              color: Colors.black54,
+              size: 25.0,
+            ),
+          ),
+          new Padding(padding: const EdgeInsets.all(5.0)),
+        ],
       ),
       body: GridView.count(
         crossAxisCount: 4,
