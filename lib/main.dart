@@ -2,8 +2,10 @@
 //Hovering Effect -> https://pub.dev/packages/hovering
 //Opacity -> https://api.flutter.dev/flutter/widgets/Opacity-class.html
 //ClipRRect -> https://www.appsdeveloperblog.com/image-with-rounded-corners-in-flutter/
+//Icons -> https://medium.com/deviniti-technology-driven-blog/the-best-way-to-add-custom-icons-to-your-flutter-project-6381ab697813
 
 import 'package:flutter/material.dart';
+import 'package:flutter_pinterest/app_icons.dart';
 import 'package:hovering/hovering.dart';
 
 void main() => runApp(MyApp());
