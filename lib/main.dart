@@ -260,21 +260,23 @@ class GridList extends StatelessWidget {
                     //WIDGET VISIBLE WITH HOVER
                     hoverChild: ClipRRect(
                       borderRadius: BorderRadius.circular(15.0),
+
                       //https://api.flutter.dev/flutter/widgets/Stack-class.html
                       child: Stack(
+                        //https://www.javatpoint.com/flutter-stack
+                        //fit -> The loose (default) used to set the non-positioned child widget small.
+                        //Now,the expand attribute makes the child widget as large as possible.
+                        fit: StackFit.expand,
+
                         children: <Widget>[
                           //CHILD #1 -> IMAGE (LOW OPACITY)
-                          new SizedBox(
-                            // height: 200,
-                            // width: 200,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(15.0),
-                              child: Image.network(
-                                data,
-                                fit: BoxFit.cover,
-                                color: Color.fromRGBO(255, 255, 255, 0.5),
-                                colorBlendMode: BlendMode.modulate,
-                              ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15.0),
+                            child: Image.network(
+                              data,
+                              fit: BoxFit.cover,
+                              color: Color.fromRGBO(255, 255, 255, 0.5),
+                              colorBlendMode: BlendMode.modulate,
                             ),
                           ),
                           //END OF CHILD #1
@@ -292,6 +294,7 @@ class GridList extends StatelessWidget {
                               //width: 120,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   //BOARDS DROPDOWN
                                   Expanded(
@@ -309,15 +312,25 @@ class GridList extends StatelessWidget {
                                           new Padding(
                                               padding:
                                                   const EdgeInsets.all(10.0)),
-                                          Text(
-                                            "My Board",
-                                            style: TextStyle(
-                                              color: Colors.black54,
+                                          // Text(
+                                          //   "My Board",
+                                          //   style: TextStyle(
+                                          //     color: Colors.black54,
+                                          //   ),
+                                          // ),
+
+                                          Expanded(
+                                            child: Text(
+                                              "My Board",
+                                              style: TextStyle(
+                                                color: Colors.black54,
+                                              ),
                                             ),
                                           ),
+
                                           //Padding for large space between widgets is not good, because container size may vary. That would result in content overflow.
                                           //Spacer -> https://stackoverflow.com/a/52377051/12302691
-                                          Spacer(),
+                                          //Spacer(),
                                           Icon(
                                             AppIcons.down_open,
                                             color: Colors.black87,
