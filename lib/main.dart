@@ -68,14 +68,17 @@ class GridList extends StatelessWidget {
         //Leading -> https://api.flutter.dev/flutter/material/AppBar/leading.html
         leading: Builder(
           builder: (BuildContext context) {
-            return IconButton(
+            return FloatingActionButton(
+              mini: true,
               onPressed: () {},
-              icon: Icon(
+              backgroundColor: Colors.white,
+              elevation: 0.0,
+              hoverColor: Colors.black26,
+              child: Icon(
                 AppIcons.pinterest_icon,
                 color: Colors.red[800],
                 size: 25.0,
               ),
-              hoverColor: Colors.black26,
             );
           },
         ),
@@ -182,40 +185,52 @@ class GridList extends StatelessWidget {
         //ACTIONS
         actions: <Widget>[
           new Padding(padding: const EdgeInsets.all(5.0)),
-          IconButton(
+          FloatingActionButton(
+            mini: true,
             onPressed: () {},
+            backgroundColor: Colors.white,
+            elevation: 0.0,
             hoverColor: Colors.black26,
-            icon: const Icon(
+            child: const Icon(
               AppIcons.bell,
               color: Colors.black54,
               size: 20.0,
             ),
           ),
           new Padding(padding: const EdgeInsets.all(5.0)),
-          IconButton(
+          FloatingActionButton(
+            mini: true,
             onPressed: () {},
+            backgroundColor: Colors.white,
+            elevation: 0.0,
             hoverColor: Colors.black26,
-            icon: const Icon(
+            child: const Icon(
               AppIcons.chat,
               color: Colors.black54,
               size: 20.0,
             ),
           ),
           new Padding(padding: const EdgeInsets.all(5.0)),
-          IconButton(
+          FloatingActionButton(
+            mini: true,
             onPressed: () {},
+            backgroundColor: Colors.white,
+            elevation: 0.0,
             hoverColor: Colors.black26,
-            icon: const Icon(
+            child: const Icon(
               AppIcons.person,
               color: Colors.black54,
               size: 20.0,
             ),
           ),
           new Padding(padding: const EdgeInsets.all(5.0)),
-          IconButton(
+          FloatingActionButton(
+            mini: true,
             onPressed: () {},
+            backgroundColor: Colors.white,
+            elevation: 0.0,
             hoverColor: Colors.black26,
-            icon: const Icon(
+            child: const Icon(
               AppIcons.down_open,
               color: Colors.black54,
               size: 20.0,
