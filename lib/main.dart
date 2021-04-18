@@ -327,12 +327,6 @@ class GridList extends StatelessWidget {
                                           new Padding(
                                               padding:
                                                   const EdgeInsets.all(10.0)),
-                                          // Text(
-                                          //   "My Board",
-                                          //   style: TextStyle(
-                                          //     color: Colors.black54,
-                                          //   ),
-                                          // ),
 
                                           Expanded(
                                             child: Text(
