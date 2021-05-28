@@ -3,6 +3,8 @@
 //Opacity -> https://api.flutter.dev/flutter/widgets/Opacity-class.html
 //ClipRRect -> https://www.appsdeveloperblog.com/image-with-rounded-corners-in-flutter/
 //Icons -> https://medium.com/deviniti-technology-driven-blog/the-best-way-to-add-custom-icons-to-your-flutter-project-6381ab697813
+//Null Safety Problem -> https://dart.dev/null-safety/migration-guide
+//Avoid using web-only libraries outside Flutter web plugin packages -> https://stackoverflow.com/a/60646794/12302691
 
 import 'package:flutter/material.dart';
 import 'package:flutter_pinterest/app_icons.dart';
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'GridView Demo',
+      title: 'Flutter Pinterest App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.red,
